@@ -1,4 +1,4 @@
-package com.produtos.api.models;
+package com.produtos.apirest.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,9 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
-@Table(name= "TB_PRODUTO")
+@Table(name="TB_PRODUTO")
 public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -19,10 +21,16 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@NotNull
 	private String nome;
-	private String marca;
+	
+	@NotNull
 	private BigDecimal quantidade;
+	
+	@NotNull
 	private BigDecimal valor;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -34,12 +42,6 @@ public class Produto implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getMarca() {
-		return marca;
-	}
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 	public BigDecimal getQuantidade() {
 		return quantidade;
